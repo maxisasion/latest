@@ -7,9 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Removed splash screen styles */
-        
-        /* Rest of the styles remain unchanged */
+        /* All existing CSS remains unchanged */
         :root {
             --primary-color: #008000;
             --secondary-color: #006400;
@@ -318,9 +316,6 @@
     </style>
 </head>
 <body>
-    <!-- Removed splash screen -->
-
-    <!-- Main App Content (now immediately visible) -->
     <div class="container">
         <div class="card">
             <div class="card-header">
@@ -504,7 +499,7 @@
                 "BTC/USD": 1,
                 "XAU/USD": 0.1
             },
-            // Trading style configurations
+            // Trading style configurations with 1000+ pips TP
             tradingStyles: {
                 scalping: {
                     tpMultiplier: 1.5,
@@ -522,7 +517,7 @@
                     timeframe: "240"
                 }
             },
-            activationCodes: ["FXBULLS#$", "TRADE96", "PROFX567", "BULLS80", "ACTIVATE02"]
+            activationCodes: ["FXBULLS.1", "TRADr", "PROFX567", "BULLS80", "ACTIVATE02"]
         };
 
         // Generate 1000 unique license keys
@@ -1153,26 +1148,25 @@
             // Get trading style configuration
             const styleConfig = config.tradingStyles[tradingStyle] || config.tradingStyles.day;
             
-            // Calculate TP/SL based on trading style and analysis confidence
+            // Calculate TP/SL with minimum 1000 pips for TP
             let tpPips, slPips;
             
-            // Base values for each trading style
+            // Set minimum TP to 1000 pips for all trading styles
+            tpPips = 1000 + Math.floor(Math.random() * 500); // 1000-1500 pips
+            
+            // Adjust SL based on trading style
             switch(tradingStyle) {
                 case "scalping":
-                    tpPips = 15 + Math.floor(Math.random() * 10); // 15-25 pips
-                    slPips = 10 + Math.floor(Math.random() * 5);  // 10-15 pips
+                    slPips = 150 + Math.floor(Math.random() * 50); // 150-200 pips
                     break;
                 case "day":
-                    tpPips = 40 + Math.floor(Math.random() * 30); // 40-70 pips
-                    slPips = 20 + Math.floor(Math.random() * 15); // 20-35 pips
+                    slPips = 200 + Math.floor(Math.random() * 100); // 200-300 pips
                     break;
                 case "swing":
-                    tpPips = 100 + Math.floor(Math.random() * 100); // 100-200 pips
-                    slPips = 50 + Math.floor(Math.random() * 30);   // 50-80 pips
+                    slPips = 300 + Math.floor(Math.random() * 150); // 300-450 pips
                     break;
                 default:
-                    tpPips = 30;
-                    slPips = 15;
+                    slPips = 200;
             }
             
             // Adjust for volatility and confidence
@@ -1252,16 +1246,4 @@
         document.addEventListener("DOMContentLoaded", init);
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
